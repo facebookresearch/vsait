@@ -1,0 +1,4 @@
+fvcore
+pytorch-lightning
+torch
+torchvision

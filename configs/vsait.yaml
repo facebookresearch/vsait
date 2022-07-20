@@ -1,0 +1,43 @@
+TASK_MODEL:
+  NAME: VSAIT
+  IN_CHANNELS: 3
+  OUT_CHANNELS: 3
+  RES_BLOCKS: 9
+  RES_CHANNELS: 64
+  DISCRIMINATOR_SCALES: 1
+  FEATURE_EXTRACTOR:
+    MODEL: vgg19
+    RETURN_NODES:
+      - features.2
+      - features.7
+      - features.12
+      - features.21
+      - features.30
+  LSH:
+    kernel_size: [16, 8, 4, 2, 1]
+    out_channels: 4096
+    stride: [16, 8, 4, 2, 1]
+  LOSSES: [vsa, adv, discr]
+  GAN_LOSS_FN: loss_hinge_gan
+  VSA_LOSS_COEF: 10.0
+  IMAGE_LOGGING_FREQ: 1000
+OPTIMIZERS:
+- BETAS:
+  - 0.0
+  - 0.9
+  LEARNING_RATE: 0.0001
+  NAME: Adam
+  NET_PREFIX: model.g_net
+  WEIGHT_DECAY: 0.0001
+- BETAS:
+  - 0.0
+  - 0.9
+  LEARNING_RATE: 0.0004
+  NAME: Adam
+  NET_PREFIX: model.d_net
+  WEIGHT_DECAY: 0.0001
+SCHEDULER:
+  GAMMA: 0.5
+  INTERVAL: step
+  NAME: StepLR
+  STEP_SIZE: 100000

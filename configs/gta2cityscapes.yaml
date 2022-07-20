@@ -1,0 +1,25 @@
+DATA:
+  TRAIN:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTrain
+    BATCH_SIZE: 1
+    NUM_WORKERS: 8
+    DATA_DIR: ./data/source/train/
+  TRAIN_TARGET:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTrain
+    BATCH_SIZE: 1
+    NUM_WORKERS: 8
+    DATA_DIR: ./data/target/train/
+  VAL_SOURCE:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTest
+    BATCH_SIZE: 1
+    NUM_WORKERS: 1
+    DATA_DIR: ./data/source/val/
+  VAL_TARGET:
+    NAME: LocalDataset
+    LOADER: LocalLoaderTest
+    BATCH_SIZE: 1
+    NUM_WORKERS: 1
+    DATA_DIR: ./data/target/val/

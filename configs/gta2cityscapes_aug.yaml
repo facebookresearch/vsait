@@ -1,0 +1,37 @@
+AUG:
+  TRAIN:
+    - Resize:
+        size: [256, 512]
+    - RandomCrop:
+        size: 256
+    - RandomHorizontalFlip:
+        p: 0.5
+    - ToTensor
+    - Normalize:
+        mean: [0.5, 0.5, 0.5]
+        std: [0.5, 0.5, 0.5]
+  TRAIN_TARGET:
+    - Resize:
+        size: [256, 512]
+    - RandomCrop:
+        size: 256
+    - RandomHorizontalFlip:
+        p: 0.5
+    - ToTensor
+    - Normalize:
+        mean: [0.5, 0.5, 0.5]
+        std: [0.5, 0.5, 0.5]
+  VAL_SOURCE:
+    - Resize:
+        size: [256, 512]
+    - ToTensor
+    - Normalize:
+        mean: [0.5, 0.5, 0.5]
+        std: [0.5, 0.5, 0.5]
+  VAL_TARGET:
+    - Resize:
+        size: [256, 512]
+    - ToTensor
+    - Normalize:
+        mean: [0.5, 0.5, 0.5]
+        std: [0.5, 0.5, 0.5]
